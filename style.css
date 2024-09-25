@@ -48,20 +48,46 @@
 }
   
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+/*
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+    -webkit-appearance: none; 
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: green; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    width: 25px; 
+    height: 25px; 
+    background: green; 
+    cursor: pointer; 
     border-radius: 50%;
 }
-  
+*/
+
 .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
     background: blue; /* Green background */
     cursor: pointer; /* Cursor on hover */
     border-radius: 50%;
+    transition: background-color 0.5s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; /* Thumb width */
+    height: 20px; /* Thumb height */
+    border-radius: 50%;
+    background-color: green; /* Initial color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.5s; /* Smooth transition for background color */
+}
+
+/* Keyframes for the color change */
+@keyframes sliderColorChange {
+    0% { background-color: green; }
+    25% { background-color: yellow; }
+    75% { background-color: orange; }
+    100% { background-color: red; }
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: var(--thumb-color, green); /* Use the custom property */
 }

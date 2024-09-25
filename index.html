@@ -24,14 +24,80 @@
 
         <div class="outer">
             <div class="div_2">
-                <!-- Slider 1 -->
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <!-- Sliders (Inverted container, so top slider starts at the bottom.) -->
+                    <input type="range" min="1" max="110" value="50" class="slider" id="slider">
+                    <!--
+                    <input type="range" min="1" max="150" value="50" class="slider" id="slider_2">
+                    <input type="range" min="1" max="200" value="50" class="slider" id="slider_3">
+                    -->
             </div>
         </div>
     </body>
 
+<!--
+    <script>
+        const slider_1 = document.getElementById('slider_1');
+        const slider_2 = document.getElementById('slider_2');
+        const slider_3 = document.getElementById('slider_3');
 
+        function updateSliderColor(value) {
+            // Calculate the percentage based on the slider value
+            const percentage = (value - 1) / 99; // Normalize to 0-1 range
 
+            // Create a CSS color string based on the keyframe animation
+            const color = `rgb(${Math.round(255 * percentage)}, ${Math.round(255 * (1 - percentage))}, 0)`;
+            
+            // Update the thumb color
+            slider.style.setProperty('--thumb-color', color);
+            }
+
+        // Initialize with the default value
+        updateSliderColor(slider_1.value);
+        updateSliderColor(slider_2.value);
+        updateSliderColor(slider_3.value);
+
+        // Update color on slider input
+        // 1
+        slider_1.addEventListener('input', (event) => {
+            updateSliderColor(event.target.value);
+        });
+
+        // 2
+        slider_2.addEventListener('input', (event) => {
+            updateSliderColor(event.target.value);
+        });
+
+        // 3
+        slider_3.addEventListener('input', (event) => {
+            updateSliderColor(event.target.value);
+        });
+
+    </script>
+
+-->
+
+<script>
+    const slider = document.getElementById('slider');
+
+    function updateSliderColor(value) {
+        // Calculate the percentage based on the slider value
+        const percentage = (value - 1) / 99; // Normalize to 0-1 range
+
+        // Create a CSS color string based on the keyframe animation
+        const color = `rgb(${Math.round(255 * percentage)}, ${Math.round(255 * (1 - percentage))}, 0)`;
+        
+        // Update the thumb color
+        slider.style.setProperty('--thumb-color', color);
+        }
+
+    // Initialize with the default value
+    updateSliderColor(slider.value);
+
+    // Update color on slider input
+    // 1
+    slider.addEventListener('input', (event) => {
+        updateSliderColor(event.target.value);
+    });
+
+</script>
 </html>
