@@ -18,28 +18,45 @@
 
 }
 
+/* Column of sliders */
 .div_2 {
     display: flex;
     flex-direction: column-reverse;
-    width: 10%;
+    width: 12%;
     height: 100%;
-    margin-right: 50px;
+    margin-right: 80px;
 
 }
-  
+
+.slider_container {
+    text-align: left;
+    padding: 2px;
+    margin: 1px;
+
+}
+
+
+.slider_name {
+    color: white;
+    font-style: bold;
+    font-size: 25px;
+    font-family: "Kanit";
+    margin: 0 auto;
+
+}
+
 /* The slider itself */
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 15px; /* Specified height */
+    height: 16px; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
     border-radius: 8px;
-    margin: 15px;
 }
   
 /* Mouse-over effects */
@@ -75,19 +92,21 @@ input[type="range"]::-webkit-slider-thumb {
     width: 20px; /* Thumb width */
     height: 20px; /* Thumb height */
     border-radius: 50%;
-    background-color: green; /* Initial color */
+    background-color: rgb(0, 102, 128); /* Initial color */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.5s; /* Smooth transition for background color */
 }
 
-/* Keyframes for the color change */
-@keyframes sliderColorChange {
-    0% { background-color: green; }
-    25% { background-color: yellow; }
-    75% { background-color: orange; }
-    100% { background-color: red; }
+
+/* Color changes for sliders */
+input[type=range].slider-green::-webkit-slider-thumb {
+    background: green;
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    background-color: var(--thumb-color, green); /* Use the custom property */
+input[type=range].slider-yellow::-webkit-slider-thumb {
+    background: yellow;
+}
+
+input[type=range].slider-red::-webkit-slider-thumb {
+    background: red;
 }

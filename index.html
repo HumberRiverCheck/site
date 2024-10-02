@@ -15,6 +15,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+
         <!-- Stylesheet -->
         <link rel="stylesheet" href="style.css">
         
@@ -25,79 +29,186 @@
         <div class="outer">
             <div class="div_2">
                 <!-- Sliders (Inverted container, so top slider starts at the bottom.) -->
-                    <input type="range" min="1" max="110" value="50" class="slider" id="slider">
-                    <!--
-                    <input type="range" min="1" max="150" value="50" class="slider" id="slider_2">
-                    <input type="range" min="1" max="200" value="50" class="slider" id="slider_3">
-                    -->
+
+                    <!-- WORMS -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Worms </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms">
+                    </div>
+
+                    <!-- MIDGES -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Midges </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges">
+                    </div>
+                    
+                    <!-- SOWBUGS -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Sowbugs </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs">
+                    </div>
+                    
+                    <!-- SNAILS -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Snails </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_snails">
+                    </div>
+
+                    <!-- SPECIES -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Species </h4>
+                        <input type="range" min="0" max="28" value="0" class="slider" id="slider_species">
+                    </div>
+                    
+                    <!-- DOMINANT SPECIES -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Dominant Species </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species">
+                    </div>
+                    
+                    <!-- EPT INDEX -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> EPT Index </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept">
+                    </div>
+
+                    <!-- FLIES -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Flies </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies">
+                    </div>
+
+                    <!-- INSECTS -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Insects </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_insects">
+                    </div>
+
+                    <!-- HBI INDEX -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> HBI Index </h4>
+                        <input type="range" min="1" max="8" value="0" class="slider" id="slider_hbi">
+                    </div>
             </div>
         </div>
     </body>
 
-<!--
-    <script>
-        const slider_1 = document.getElementById('slider_1');
-        const slider_2 = document.getElementById('slider_2');
-        const slider_3 = document.getElementById('slider_3');
 
-        function updateSliderColor(value) {
-            // Calculate the percentage based on the slider value
-            const percentage = (value - 1) / 99; // Normalize to 0-1 range
 
-            // Create a CSS color string based on the keyframe animation
-            const color = `rgb(${Math.round(255 * percentage)}, ${Math.round(255 * (1 - percentage))}, 0)`;
-            
-            // Update the thumb color
-            slider.style.setProperty('--thumb-color', color);
-            }
-
-        // Initialize with the default value
-        updateSliderColor(slider_1.value);
-        updateSliderColor(slider_2.value);
-        updateSliderColor(slider_3.value);
-
-        // Update color on slider input
-        // 1
-        slider_1.addEventListener('input', (event) => {
-            updateSliderColor(event.target.value);
-        });
-
-        // 2
-        slider_2.addEventListener('input', (event) => {
-            updateSliderColor(event.target.value);
-        });
-
-        // 3
-        slider_3.addEventListener('input', (event) => {
-            updateSliderColor(event.target.value);
-        });
-
-    </script>
-
--->
-
+    
 <script>
-    const slider = document.getElementById('slider');
+    /* Slider color changer for sliders with percentages */
+    class SliderColorController {
+        constructor(sliderId, max_1, min_1, max_2, max_3) {
+            this.slider = document.getElementById(sliderId);
+            this.maxValue = this.slider.max;
 
-    function updateSliderColor(value) {
-        // Calculate the percentage based on the slider value
-        const percentage = (value - 1) / 99; // Normalize to 0-1 range
-
-        // Create a CSS color string based on the keyframe animation
-        const color = `rgb(${Math.round(255 * percentage)}, ${Math.round(255 * (1 - percentage))}, 0)`;
-        
-        // Update the thumb color
-        slider.style.setProperty('--thumb-color', color);
+            this.max_1 = max_1;
+            this.min_1 = min_1;
+            this.max_2 = max_2;
+            this.max_3 = max_3;
+            
+            this.slider.addEventListener('input', () => {
+                this.updateSliderColor();
+            });
         }
 
-    // Initialize with the default value
-    updateSliderColor(slider.value);
+        // Method to update slider color based on its value
+        updateSliderColor() {
+            const currentValue = this.slider.value;
 
-    // Update color on slider input
-    // 1
-    slider.addEventListener('input', (event) => {
-        updateSliderColor(event.target.value);
+            // Add or remove the 'slider-green' class based on the value
+            if (currentValue <= this.maxValue * this.max_1) {
+                this.slider.classList.add('slider-green');
+            } else {
+                this.slider.classList.remove('slider-green');
+            }
+
+            // Add or remove the 'slider-yellow' class based on the value
+            if (currentValue >= this.maxValue * this.min_1 && currentValue <= this.maxValue * this.max_2) {
+                this.slider.classList.add('slider-yellow');
+            } else {
+                this.slider.classList.remove('slider-yellow');
+            }
+
+            // Add or remove the 'slider-red' class based on the value
+            if (currentValue >= this.maxValue * this.max_3) {
+                this.slider.classList.add('slider-red');
+            } else {
+                this.slider.classList.remove('slider-red');
+            }
+        }
+    }
+
+ /*
+    document.getElementById('slider_worms').addEventListener('input', function () {
+        const slider = this;
+        const maxValue = slider.max;
+        const currentValue = slider.value;
+
+        if (currentValue <= maxValue * 0.10) {
+            slider.classList.add('slider-green');
+        } else {
+            slider.classList.remove('slider-green');
+        }
+
+        if ((currentValue >= maxValue * 0.11) && (currentValue <= maxValue * 0.30)) {
+            slider.classList.add('slider-yellow');
+        } else {
+            slider.classList.remove('slider-yellow');
+        }
+ 
+        if (currentValue >= maxValue * 0.31) {
+            slider.classList.add('slider-red');
+        } else {
+            slider.classList.remove('slider-red');
+        }
+        
     });
+*/
+
+    /* WORMS slider color */
+    new SliderColorController('slider_worms', 0.10, 0.11, 0.30, 0.31);
+
+    /* MIDGES slider color */
+    new SliderColorController('slider_midges', 0.10, 0.11, 0.40, 0.41);
+
+    /* SOWBUGS slider color */
+    new SliderColorController('slider_sowbugs', 0.00, 0.01, 0.05, 0.06);
+
+    /* SNAILS slider color */
+    new SliderColorController('slider_snails', 0.00, 0.01, 0.10, 0.11);
+
+    /* SPECIES slider color */
+    document.getElementById('slider_species').addEventListener('input', function () {
+        const slider = this;
+        const currentValue = slider.value;
+
+        if (currentValue <= 10) {
+            slider.classList.add('slider-red');
+        } else {
+            slider.classList.remove('slider-red');
+        }
+
+        if (currentValue == 11) {
+            slider.classList.add('slider-yellow');
+        } else {
+            slider.classList.remove('slider-yellow');
+        }
+ 
+        if (currentValue >= 12) {
+            slider.classList.add('slider-green');
+        } else {
+            slider.classList.remove('slider-green');
+        }
+        
+    });
+
+    /* DOMINANT SPECIES slider color */
+    new SliderColorController('slider_sowbugs', 0.40, 0.41, 0.45, 0.46);
+
+    /* EPT INDEX SPECIES slider color */
+    new SliderColorController('slider_sowbugs', 0.11, 0.10, 0.06, 0.05);
 
 </script>
 </html>
