@@ -32,6 +32,7 @@
     text-align: left;
     padding: 2px;
     margin: 1px;
+    background: rgba(97, 91, 91, 0.473)
 
 }
 
@@ -110,3 +111,11 @@ input[type=range].slider-yellow::-webkit-slider-thumb {
 input[type=range].slider-red::-webkit-slider-thumb {
     background: red;
 }
+
+/* Current value of slider */
+.slider_value_display {
+    font-style: normal;
+    margin-left: 5px;
+
+}
+

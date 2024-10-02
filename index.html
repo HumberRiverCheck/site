@@ -32,31 +32,31 @@
 
                     <!-- WORMS -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Worms </h4>
+                        <h4 class="slider_name"> Worms: <var class="slider_value_display" id="worms_value">0</var> % </h4>
                         <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms">
                     </div>
 
                     <!-- MIDGES -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Midges </h4>
+                        <h4 class="slider_name"> Midges: <var class="slider_value_display" id="midges_value">0</var> % </h4>
                         <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges">
                     </div>
                     
                     <!-- SOWBUGS -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Sowbugs </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs">
+                        <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
+                        <input type="range" min="0" max="100" value="40" class="slider" id="slider_sowbugs">
                     </div>
                     
                     <!-- SNAILS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Snails </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_snails">
+                        <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails">
                     </div>
 
                     <!-- SPECIES -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Species </h4>
+                        <h4 class="slider_name"> Species</h4>
                         <input type="range" min="0" max="28" value="0" class="slider" id="slider_species">
                     </div>
                     
@@ -99,14 +99,14 @@
 <script>
     /* Slider color changer for sliders with percentages */
     class SliderColorController {
-        constructor(sliderId, max_1, min_1, max_2, max_3) {
+        constructor(sliderId, max_1, min_2, max_2, min_3) {
             this.slider = document.getElementById(sliderId);
             this.maxValue = this.slider.max;
 
             this.max_1 = max_1;
-            this.min_1 = min_1;
+            this.min_2 = min_2;
             this.max_2 = max_2;
-            this.max_3 = max_3;
+            this.min_3 = min_3;
             
             this.slider.addEventListener('input', () => {
                 this.updateSliderColor();
@@ -125,20 +125,48 @@
             }
 
             // Add or remove the 'slider-yellow' class based on the value
-            if (currentValue >= this.maxValue * this.min_1 && currentValue <= this.maxValue * this.max_2) {
+            if (currentValue >= this.maxValue * this.min_2 && currentValue <= this.maxValue * this.max_2) {
                 this.slider.classList.add('slider-yellow');
             } else {
                 this.slider.classList.remove('slider-yellow');
             }
 
             // Add or remove the 'slider-red' class based on the value
-            if (currentValue >= this.maxValue * this.max_3) {
+            if (currentValue >= this.maxValue * this.min_3) {
                 this.slider.classList.add('slider-red');
             } else {
                 this.slider.classList.remove('slider-red');
             }
         }
     }
+
+    /* Value display */
+    class ValueDisplay {
+        constructor(sliderId, varId) {
+            // Select the slider and <var> elements by their IDs
+            this.slider = document.getElementById(sliderId);
+            this.varElement = document.querySelector(`#${varId}`);
+
+            this.slider.addEventListener('input', () => {
+                this.updateContent();
+            });
+        }
+
+        updateContent() {
+            if (this.varElement) {
+                const currentValue = this.slider.value;
+                const maxValue = this.slider.max;
+                const valPercentage = currentValue / maxValue * 100;
+                const valRound = Math.round(valPercentage);
+                this.varElement.textContent = valRound;
+
+            } else {
+                console.error('Var element not found');
+            }
+        }
+
+    }
+    
 
  /*
     document.getElementById('slider_worms').addEventListener('input', function () {
@@ -167,19 +195,32 @@
     });
 */
 
-    /* WORMS slider color */
+    /* WORMS */
+    // Color
     new SliderColorController('slider_worms', 0.10, 0.11, 0.30, 0.31);
+
+    // Value
+    new ValueDisplay('slider_worms', 'worms_value');
 
     /* MIDGES slider color */
     new SliderColorController('slider_midges', 0.10, 0.11, 0.40, 0.41);
 
+    // Value
+    new ValueDisplay('slider_midges', 'midges_value');
+
     /* SOWBUGS slider color */
     new SliderColorController('slider_sowbugs', 0.00, 0.01, 0.05, 0.06);
+
+    // Value
+    new ValueDisplay('slider_sowbugs', 'worms_sowbugs');
 
     /* SNAILS slider color */
     new SliderColorController('slider_snails', 0.00, 0.01, 0.10, 0.11);
 
-    /* SPECIES slider color */
+    // Value
+    new ValueDisplay('slider_snails', 'snails_value');
+
+    /* SPECIES slider color (INVERSE) */
     document.getElementById('slider_species').addEventListener('input', function () {
         const slider = this;
         const currentValue = slider.value;
@@ -204,11 +245,181 @@
         
     });
 
+    // Value
+    new ValueDisplay('slider_species', 'species_value');
+
     /* DOMINANT SPECIES slider color */
-    new SliderColorController('slider_sowbugs', 0.40, 0.41, 0.45, 0.46);
+    new SliderColorController('slider_d_species', 0.40, 0.41, 0.45, 0.46);
+
+    // Value
+    new ValueDisplay('slider_d_species', 'd_species_value');
 
     /* EPT INDEX SPECIES slider color */
-    new SliderColorController('slider_sowbugs', 0.11, 0.10, 0.06, 0.05);
+    document.getElementById('slider_ept').addEventListener('input', function () {
+        const slider = this;
+        const maxValue = slider.max;
+        const currentValue = slider.value;
+
+        if (currentValue <= maxValue * 0.05) {
+            slider.classList.add('slider-red');
+        } else {
+            slider.classList.remove('slider-red');
+        }
+
+        if ((currentValue >= maxValue * 0.06) && (currentValue <= maxValue * 0.10)) {
+            slider.classList.add('slider-yellow');
+        } else {
+            slider.classList.remove('slider-yellow');
+        }
+ 
+        if (currentValue >= maxValue * 0.11) {
+            slider.classList.add('slider-green');
+        } else {
+            slider.classList.remove('slider-green');
+        }
+        
+    });
+
+    // Value
+    new ValueDisplay('slider_ept', 'ept_value');
+
+    /* FLIES (NON-LINEAR) */
+    document.getElementById('slider_flies').addEventListener('input', function () {
+        const slider = this;
+        const maxValue = slider.max;
+        const currentValue = slider.value;
+
+        /* Red */
+        if (currentValue <= maxValue * 0.15) {
+            slider.classList.remove('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.add('slider-red');
+        } 
+        
+        /* Yellow */
+        else if ((currentValue >= maxValue * 0.16) && (currentValue <= maxValue * 0.20)) {
+            slider.classList.remove('slider-green');
+            slider.classList.add('slider-yellow');
+            slider.classList.remove('slider-red');
+        }
+
+        /* Green */
+        else if ((currentValue >= maxValue * 0.21) && (currentValue <= maxValue * 0.45)) {
+            slider.classList.add('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.remove('slider-red');
+        }
+        
+        /* Yellow */
+        else if ((currentValue >= maxValue * 0.46) && (currentValue <= maxValue * 0.50)) {
+            slider.classList.remove('slider-green');
+            slider.classList.add('slider-yellow');
+            slider.classList.remove('slider-red');
+        }
+
+        /* Red */
+        else if (currentValue >= maxValue * 0.51) {
+            slider.classList.remove('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.add('slider-red');
+        }
+        
+        else {
+            slider.classList.remove('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.remove('slider-red');
+        }
+
+    });
+
+    // Value
+    new ValueDisplay('slider_flies', 'flies_value');
+
+    /* INSECTS */
+    document.getElementById('slider_insects').addEventListener('input', function () {
+        const slider = this;
+        const maxValue = slider.max;
+        const currentValue = slider.value;
+
+        /* Red */
+        if (currentValue <= maxValue * 0.40) {
+            slider.classList.remove('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.add('slider-red');
+        } 
+        
+        /* Yellow */
+        else if ((currentValue >= maxValue * 0.41) && (currentValue <= maxValue * 0.50)) {
+            slider.classList.remove('slider-green');
+            slider.classList.add('slider-yellow');
+            slider.classList.remove('slider-red');
+        }
+
+        /* Red */
+        else if ((currentValue >= maxValue * 0.51) && (currentValue <= maxValue * 0.80)) {
+            slider.classList.remove('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.add('slider-red');
+        }
+        
+        /* Yellow */
+        else if ((currentValue >= maxValue * 0.81) && (currentValue <= maxValue * 0.90)) {
+            slider.classList.remove('slider-green');
+            slider.classList.add('slider-yellow');
+            slider.classList.remove('slider-red');
+        }
+
+        /* Red */
+        else if (currentValue >= maxValue * 0.91) {
+            slider.classList.remove('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.add('slider-red');
+        }
+        
+        else {
+            slider.classList.remove('slider-green');
+            slider.classList.remove('slider-yellow');
+            slider.classList.remove('slider-red');
+        }
+
+    });
+
+    // Value
+    new ValueDisplay('slider_insects', 'insects_value');
+
+    /* HBI INDEX (NUMBERED) */
+    document.getElementById('slider_hbi').addEventListener('input', function () {
+        const slider = this;
+        const currentValue = slider.value;
+
+        if (currentValue <= 5) {
+            slider.classList.add('slider-green');
+        } else {
+            slider.classList.remove('slider-green');
+        }
+
+        if (currentValue >= 6 && currentValue <= 7) {
+            slider.classList.add('slider-yellow');
+        } else {
+            slider.classList.remove('slider-yellow');
+        }
+ 
+        if (currentValue == 8) {
+            slider.classList.add('slider-red');
+        } else {
+            slider.classList.remove('slider-red');
+        }
+        
+    });
+
+    // Value
+    new ValueDisplay('slider_hbi', 'hbi_value');
+
+
+    /* TER Rating */
+
+
+
 
 </script>
 </html>
