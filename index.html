@@ -27,7 +27,22 @@
     <body class="background_1">
 
         <div class="outer">
-            <div class="div_2">
+            <div class="slider_info_wrap">
+                <!-- Description for worms slider -->
+                <div class="worms_info">
+                    <p> sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                </div>
+
+                <!-- Display for midges slider -->
+                <div class="midges_info">
+                    <p> nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                </div>
+
+                
+
+            </div>
+
+            <div class="slider_column">
                 <!-- Sliders (Inverted container, so top slider starts at the bottom.) -->
 
                     <!-- WORMS -->
@@ -45,51 +60,52 @@
                     <!-- SOWBUGS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="40" class="slider" id="slider_sowbugs">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs">
                     </div>
                     
                     <!-- SNAILS -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Snails </h4>
+                        <h4 class="slider_name"> Snails: <var class="slider_value_display" id="snails_value">0</var> % </h4>
                         <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails">
                     </div>
 
                     <!-- SPECIES -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Species</h4>
+                        <h4 class="slider_name"> Species: <var class="slider_value_display" id="species_value">0</var> % </h4>
                         <input type="range" min="0" max="28" value="0" class="slider" id="slider_species">
                     </div>
                     
                     <!-- DOMINANT SPECIES -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Dominant Species </h4>
+                        <h4 class="slider_name"> Dominant Species: <var class="slider_value_display" id="d_species_value">0</var> % </h4>
                         <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species">
                     </div>
                     
                     <!-- EPT INDEX -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> EPT Index </h4>
+                        <h4 class="slider_name"> EPT Index: <var class="slider_value_display" id="ept_value">0</var> % </h4>
                         <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept">
                     </div>
 
                     <!-- FLIES -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Flies </h4>
+                        <h4 class="slider_name"> Flies: <var class="slider_value_display" id="flies_value">0</var> %  </h4>
                         <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies">
                     </div>
 
                     <!-- INSECTS -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Insects </h4>
+                        <h4 class="slider_name"> Insects: <var class="slider_value_display" id="insects_value">0</var> %  </h4>
                         <input type="range" min="0" max="100" value="0" class="slider" id="slider_insects">
                     </div>
 
                     <!-- HBI INDEX -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> HBI Index </h4>
+                        <h4 class="slider_name"> HBI Index: <var class="slider_value_display" id="hbi_value">0</var> %  </h4>
                         <input type="range" min="1" max="8" value="0" class="slider" id="slider_hbi">
                     </div>
             </div>
+
         </div>
     </body>
 
@@ -167,6 +183,28 @@
 
     }
     
+    /* Visibility display */
+    class InfoVisibility {
+        constructor(slider_name, box_element) {
+            this.slider = document.getElementById(slider_name);
+            this.boxElement = document.querySelector(box_element);
+
+            this.init();
+        }
+
+        init() {
+            // Show info box when mouse is held
+            this.slider.addEventListener('input', () => {
+                this.boxElement.style.display = 'flex'; // Show the element when slider is moved
+            });
+
+            // Hide info box when mouse is released
+            this.slider.addEventListener('mouseup', () => {
+                this.boxElement.style.display = 'none'; // Hide the element when slider is released
+            });
+        }
+        
+    }
 
  /*
     document.getElementById('slider_worms').addEventListener('input', function () {
@@ -195,32 +233,20 @@
     });
 */
 
-    /* WORMS */
-    // Color
+    /* Slider Color Display off of Slider Value */
+    // WORMS
     new SliderColorController('slider_worms', 0.10, 0.11, 0.30, 0.31);
 
-    // Value
-    new ValueDisplay('slider_worms', 'worms_value');
-
-    /* MIDGES slider color */
+    // MIDGES
     new SliderColorController('slider_midges', 0.10, 0.11, 0.40, 0.41);
 
-    // Value
-    new ValueDisplay('slider_midges', 'midges_value');
-
-    /* SOWBUGS slider color */
+    // SOWBUGS
     new SliderColorController('slider_sowbugs', 0.00, 0.01, 0.05, 0.06);
 
-    // Value
-    new ValueDisplay('slider_sowbugs', 'worms_sowbugs');
-
-    /* SNAILS slider color */
+    // SNAILS
     new SliderColorController('slider_snails', 0.00, 0.01, 0.10, 0.11);
 
-    // Value
-    new ValueDisplay('slider_snails', 'snails_value');
-
-    /* SPECIES slider color (INVERSE) */
+    // SPECIES
     document.getElementById('slider_species').addEventListener('input', function () {
         const slider = this;
         const currentValue = slider.value;
@@ -245,16 +271,11 @@
         
     });
 
-    // Value
-    new ValueDisplay('slider_species', 'species_value');
-
-    /* DOMINANT SPECIES slider color */
+    // DOMINANT SPECIES
     new SliderColorController('slider_d_species', 0.40, 0.41, 0.45, 0.46);
 
-    // Value
-    new ValueDisplay('slider_d_species', 'd_species_value');
 
-    /* EPT INDEX SPECIES slider color */
+    // EPT INDEX SPECIES
     document.getElementById('slider_ept').addEventListener('input', function () {
         const slider = this;
         const maxValue = slider.max;
@@ -280,10 +301,7 @@
         
     });
 
-    // Value
-    new ValueDisplay('slider_ept', 'ept_value');
-
-    /* FLIES (NON-LINEAR) */
+    // FLIES (NON-LINEAR)
     document.getElementById('slider_flies').addEventListener('input', function () {
         const slider = this;
         const maxValue = slider.max;
@@ -332,10 +350,7 @@
 
     });
 
-    // Value
-    new ValueDisplay('slider_flies', 'flies_value');
-
-    /* INSECTS */
+    // INSECTS
     document.getElementById('slider_insects').addEventListener('input', function () {
         const slider = this;
         const maxValue = slider.max;
@@ -384,10 +399,8 @@
 
     });
 
-    // Value
-    new ValueDisplay('slider_insects', 'insects_value');
 
-    /* HBI INDEX (NUMBERED) */
+    // HBI INDEX (NUMBERED) 
     document.getElementById('slider_hbi').addEventListener('input', function () {
         const slider = this;
         const currentValue = slider.value;
@@ -412,8 +425,69 @@
         
     });
 
-    // Value
+    /* Value Display */
+    // Worms
+    new ValueDisplay('slider_worms', 'worms_value');
+
+    // Midges
+    new ValueDisplay('slider_midges', 'midges_value');
+
+    // Sowbugs
+    new ValueDisplay('slider_sowbugs', 'sowbugs_value');
+
+    // Snails
+    new ValueDisplay('slider_snails', 'snails_value');
+
+    // Species
+    new ValueDisplay('slider_species', 'species_value');
+
+    // Dominant Species
+    new ValueDisplay('slider_d_species', 'd_species_value');
+
+    // EPT Index
+    new ValueDisplay('slider_ept', 'ept_value');
+
+    // Flies
+    new ValueDisplay('slider_flies', 'flies_value');
+
+    // Insects
+    new ValueDisplay('slider_insects', 'insects_value');
+
+    // HBI Index
     new ValueDisplay('slider_hbi', 'hbi_value');
+
+
+
+    /* Description Display */
+    // Worms
+    new InfoVisibility('slider_worms', '.worms_info');
+
+    // Midges
+    new InfoVisibility('slider_midges', '.midges_info');
+
+    // Sowbugs
+    new InfoVisibility('slider_sowbugs', '.sowbugs_info');
+
+    // Snails
+    new InfoVisibility('slider_snails', '.snails_info');
+
+    // Species
+    new InfoVisibility('slider_species', '.species_info');
+
+    // Dominant Species
+    new InfoVisibility('slider_d_species', '.d_species_info');
+
+    // EPT Index
+    new InfoVisibility('slider_ept', '.ept_info');
+
+    // Flies
+    new InfoVisibility('slider_flies', '.flies_info');
+
+    // Insects
+    new InfoVisibility('slider_insects', '.insects_info');
+
+    // HBI Index
+    new InfoVisibility('slider_hbi', '.hbi_info');
 
 
     /* TER Rating */

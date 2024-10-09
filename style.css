@@ -19,7 +19,7 @@
 }
 
 /* Column of sliders */
-.div_2 {
+.slider_column {
     display: flex;
     flex-direction: column-reverse;
     width: 12%;
@@ -43,6 +43,40 @@
     font-size: 25px;
     font-family: "Kanit";
     margin: 0 auto;
+
+}
+
+/* Description for sliders */
+.slider_info_wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 12%;
+    height: 100%;
+    margin-right: 15px;
+
+}
+
+.worms_info {
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    color:white;
+    background: rgba(97, 91, 91, 0.473);
+    margin-bottom: 10px;
+
+}
+
+.midges_info {
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    color:white;
+    background: rgba(97, 91, 91, 0.473);
+    margin-bottom: 10px;
 
 }
 
