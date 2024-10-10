@@ -5,6 +5,7 @@
 	background-size: 100%;
 	background-position: center;
     margin: 0 auto;
+    opacity: 0.5;
 
 }
 
@@ -22,7 +23,7 @@
 .slider_column {
     display: flex;
     flex-direction: column-reverse;
-    width: 12%;
+    width: 14%;
     height: 100%;
     margin-right: 80px;
 
@@ -69,6 +70,54 @@
 }
 
 .midges_info {
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    color:white;
+    background: rgba(97, 91, 91, 0.473);
+    margin-bottom: 10px;
+
+}
+
+.sowbugs_info {
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    color:white;
+    background: rgba(97, 91, 91, 0.473);
+    margin-bottom: 10px;
+
+}
+
+.snails_info {
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    color:white;
+    background: rgba(97, 91, 91, 0.473);
+    margin-bottom: 10px;
+
+}
+
+.species_info {
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    color:white;
+    background: rgba(97, 91, 91, 0.473);
+    margin-bottom: 10px;
+
+}
+
+.d_species_info {
     display: none;
     align-items: center;
     text-align: center;

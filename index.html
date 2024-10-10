@@ -30,12 +30,17 @@
             <div class="slider_info_wrap">
                 <!-- Description for worms slider -->
                 <div class="worms_info">
-                    <p> sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                    <p> Percentage of the total benthic macro-invertebrate sample consisting of Flatworms, Roundworms, and Aquatic Earth Worms (Oligochatea, Nematoda or Tubellaria) </p>
                 </div>
 
                 <!-- Display for midges slider -->
                 <div class="midges_info">
-                    <p> nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+                    <p> Percentage of the total benthic macro-invertebrate sample consisting of Midges (Chironomidae) </p>
+                </div>
+
+                <!-- Display for sowbugs slider -->
+                <div class="sowbugs_info">
+                    <p> Percentage of the total benthic macro-invertebrate sample consisting of Aquatic Sow Bugs (Isopoda) </p>
                 </div>
 
                 
@@ -193,14 +198,19 @@
         }
 
         init() {
-            // Show info box when mouse is held
+            // Show info box when slider is moved
             this.slider.addEventListener('input', () => {
-                this.boxElement.style.display = 'flex'; // Show the element when slider is moved
+                this.boxElement.style.display = 'flex';
+            });
+
+            // Show info box when mouse is held
+            this.slider.addEventListener('mousedown', () => {
+                this.boxElement.style.display = 'none';
             });
 
             // Hide info box when mouse is released
             this.slider.addEventListener('mouseup', () => {
-                this.boxElement.style.display = 'none'; // Hide the element when slider is released
+                this.boxElement.style.display = 'none';
             });
         }
         
