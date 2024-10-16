@@ -718,8 +718,8 @@
         const worms_rating = new GetSliderRating('slider_worms', 0.10, 0.11, 0.30, 0.31);
         const midges_rating = new GetSliderRating('slider_midges', 0.10, 0.11, 0.40, 0.41);
         const sowbugs_rating = new GetSliderRating('slider_sowbugs', 0.00, 0.01, 0.05, 0.06);
-        const d_species_rating = new GetSliderRating('slider_d_species', 0.40, 0.41, 0.45, 0.46);
         const snails_rating = new GetSliderRating('slider_snails', 0.00, 0.01, 0.10, 0.11);
+        const d_species_rating = new GetSliderRating('slider_d_species', 0.40, 0.41, 0.45, 0.46);
 
         /* Get rating for non-linear sliders */
 
@@ -730,7 +730,7 @@
         
 
 
-        totalRating = worms_rating.rating + midges_rating.rating + sowbugs_rating.rating + d_species_rating.rating + species_rating.rating;
+        totalRating = worms_rating.rating + midges_rating.rating + sowbugs_rating.rating + snails_rating.rating + d_species_rating.rating + species_rating.rating;
         
         resultDisplay.textContent = `${totalRating}`;
 
