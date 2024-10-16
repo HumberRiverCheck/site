@@ -281,7 +281,7 @@
         
     }
 
-    /* Get color for TER Rating */
+    /* Get TER Rating for linear sliders*/
     class GetSliderRating {
         constructor(sliderId, max_1, min_2, max_2, min_3) {
             this.slider = document.getElementById(sliderId);
@@ -337,6 +337,63 @@
             return this.rating;
         }
     }
+
+    /* Get TER Rating for species sliders*/
+    class GetSpeciesRating {
+        constructor(sliderId, max_1, min_2, max_2, min_3) {
+            this.slider = document.getElementById(sliderId);
+            
+            this.max_1 = max_1;
+            this.min_2 = min_2;
+            this.max_2 = max_2;
+            this.min_3 = min_3;
+            this.color = null;
+            this.rating = null;
+
+            // Call returnColor initially to set the color
+            this.returnColor();
+            this.returnValue();
+
+            // Add an event listener to update the color and rating when the slider changes
+            this.slider.addEventListener('input', () => {
+            this.returnColor();
+            this.returnValue();
+            });
+        }
+
+        returnColor() {
+            if (this.slider.value <= this.max_1) {
+            this.color = 'red';
+            } else if (
+            this.slider.value >= this.min_2 &&
+            this.slider.value <= this.max_2
+            ) {
+            this.color = 'yellow';
+            } else if (this.slider.value >= this.min_3) {
+            this.color = 'green';
+            } else {
+            this.color = null;
+            }
+
+            console.log(`Current color: ${this.color}`);
+        }
+
+        returnValue() {
+            if (this.color === 'green') {
+            this.rating = 0;
+            } else if (this.color === 'yellow') {
+            this.rating = 3;
+            } else if (this.color === 'red') {
+            this.rating = 5;
+            } else {
+            this.rating = null;
+            }
+
+            console.log(`Current rating: ${this.rating}`);
+            return this.rating;
+        }
+    }
+
 
 
 
@@ -657,12 +714,23 @@
     function calculateTotalRating() {
         let totalRating = 0;
 
+        /* Get rating for linear sliders */
         const worms_rating = new GetSliderRating('slider_worms', 0.10, 0.11, 0.30, 0.31);
         const midges_rating = new GetSliderRating('slider_midges', 0.10, 0.11, 0.40, 0.41);
         const sowbugs_rating = new GetSliderRating('slider_sowbugs', 0.00, 0.01, 0.05, 0.06);
         const d_species_rating = new GetSliderRating('slider_d_species', 0.40, 0.41, 0.45, 0.46);
+        const snails_rating = new GetSliderRating('slider_snails', 0.00, 0.01, 0.10, 0.11);
 
-        totalRating = worms_rating.rating + midges_rating.rating + sowbugs_rating.rating + d_species_rating.rating;
+        /* Get rating for non-linear sliders */
+
+        /* Get ratings for everything else */
+        
+        // Species slider
+        const species_rating = new GetSpeciesRating('slider_species', 10, 11, 11, 12);
+        
+
+
+        totalRating = worms_rating.rating + midges_rating.rating + sowbugs_rating.rating + d_species_rating.rating + species_rating.rating;
         
         resultDisplay.textContent = `${totalRating}`;
 
