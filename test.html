@@ -1,78 +1,65 @@
 <!DOCTYPE html>
 <style>
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.slider-container {
-    position: relative;
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Keep image behind the overlay */
 }
 
-input[type="range"] {
-    -webkit-appearance: none; /* Override default CSS styles */
-    width: 300px; /* Slider width */
-    height: 10px; /* Slider height */
-    background: transparent; /* Make the background transparent */
-    outline: none; /* Remove outline */
+.overlay-river {
+  position: absolute;
+  top: 30%; /* Adjust these values to position the overlay over the river */
+  left: 20%; /* Adjust according to the image */
+  width: 60%; /* Adjust to cover the width of the river area */
+  height: 20%; /* Adjust to cover the height of the river area */
+  background-color: hsl(0, 100%, 50%);
+  opacity: 0.3; /* Adjust opacity as needed */
+  z-index: 2; /* Keep overlay above the image */
+  pointer-events: none; /* Allow clicks to pass through */
+  border-radius: 20px; /* Optional: use to create a curved shape */
 }
 
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px; /* Thumb width */
-    height: 20px; /* Thumb height */
-    border-radius: 50%;
-    background-color: green; /* Initial color */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.5s; /* Smooth transition for background color */
+.slider {
+  position: absolute;
+  bottom: 20px; /* Adjust this value to move the slider up or down */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3; /* Keeps slider above all other elements */
+  width: 80%; /* Adjust width as needed */
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better visibility */
+  pointer-events: auto; /* Ensures the slider is interactive */
 }
-
-/* Keyframes for the color change */
-@keyframes sliderColorChange {
-    0% { background-color: green; }
-    25% { background-color: yellow; }
-    75% { background-color: orange; }
-    100% { background-color: red; }
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    background-color: var(--thumb-color, green); /* Use the custom property */
-}
-
 </style>
 
 
 <html>
-    <div class="slider-container">
-        <input type="range" id="slider" min="1" max="200" value="40">
-    </div>
-
+    <div class="background-container">
+        <img src="IMG_5593.jpeg" alt="Background Image" class="background-image">
+        <div class="overlay-river"></div>
+        <div>
+            <input type="range" id="colorSlider" min="0" max="360" class="slider">
+        </div>
+      </div>
 </html>
 
 <script>
-    const slider = document.getElementById('slider');
+    const colorSlider = document.getElementById('colorSlider');
+    const overlayRiver = document.querySelector('.overlay-river');
 
-    function updateSliderColor(value) {
-        // Calculate the percentage based on the slider value
-        const percentage = (value - 1) / 99; // Normalize to 0-1 range
-
-        // Create a CSS color string based on the keyframe animation
-        const color = `rgb(${Math.round(255 * percentage)}, ${Math.round(255 * (1 - percentage))}, 0)`;
-        
-        // Update the thumb color
-        slider.style.setProperty('--thumb-color', color);
-    }
-
-    // Initialize with the default value
-    updateSliderColor(slider.value);
-
-    // Update color on slider input
-    slider.addEventListener('input', (event) => {
-        updateSliderColor(event.target.value);
+    colorSlider.addEventListener('input', (event) => {
+        const hue = event.target.value;
+        overlayRiver.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
     });
 
 </script>

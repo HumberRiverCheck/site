@@ -24,8 +24,10 @@
         
     </head>
 
-    <body class="background_1">
-
+    <body class="background_image">
+    <div class="background_container">
+    <img src="IMG_5593.jpeg" alt="Background Image" class="background_image">
+    <div class="overlay_river"></div>
         <div class="outer">
             <div class="slider_info_wrap">
                 <!-- Description for worms slider -->
@@ -43,59 +45,55 @@
                     <p> Percentage of the total benthic macro-invertebrate sample consisting of Aquatic Sow Bugs (Isopoda) </p>
                 </div>
 
-                
+                <!-- Display for snails slider -->
+                <div class="snails_info">
+                    <p> Percentage of the total benthic macro-invertebrate sample consisting of Snails (Gastropoda) </p>
+                </div>
 
+                <!-- Display for species slider -->
+                <div class="species_info">
+                    <p> Number of taxonomic groups found in this sample. Some of these groups include multiple closely related species </p>
+                </div>
+
+                <!-- Display for dominant species slider -->
+                <div class="d_species_info">
+                    <p> Percentage of the total benthic macro-invertebrate sample belonging to the most common taxonomic group </p>
+                </div>
+
+                <!-- Display for ept slider -->
+                <div class="ept_info">
+                    <p> Percentage of the total benthic macro-invertebrate sample consisting of Mayflies, Stoneflies, and Caddisflies (Ephemeroptera, Plecoptera, Trichoptera) </p>
+                </div>
+                
+                <!-- Display for flies slider -->
+                <div class="flies_info">
+                    <p> Percentage of the total benthic macro-invertebrate sample consisting of True Flies, which includes Blackflies, Craneflies, Mosquitoes, Horse & Deerflies, and Midges (Diptera: Simuliidae, Tipulidae, Culicidae, Tabanidae, Chironomidae) </p>
+                </div>
+                
+                <!-- Display for insects slider -->
+                <div class="insects_info">
+                    <p>  Percentage of the total benthic macro-invertebrate sample consisting of insects. This includes Dragonflies, Beetles, Mayflies, True Bugs, Fishflies & Alderflies, Stoneflies, Caddisflies, Damselflies, and all True Flies, which includes Blackflies, Craneflies, Mosquitoes, Horse & Deerflies, and Midges, (Anisoptera, Coleoptera, Ephemeroptera, Hemiptera, Megaloptera, Plecoptera, Tricoptera, Zygoptera, Diptera: Simuliidae, Tipulidae, Culicidae, Tabanidae, Chironomidae) </p>
+                </div>
+
+                <!-- Display for hbi slider -->
+                <div class="hbi_info">
+                    <p> Hilsenhoff Biotic Index. This is calculated by taking the sum of the product of the count of each group times an established tolerance rating for each group SUM (COUNT x TOL) </p>
+                </div>
+                
             </div>
 
             <div class="slider_column">
                 <!-- Sliders (Inverted container, so top slider starts at the bottom.) -->
 
-                    <!-- WORMS -->
-                    <div class="slider_container">
-                        <h4 class="slider_name"> Worms: <var class="slider_value_display" id="worms_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms">
+                    <!-- TER Rating -->
+                    <div>
+                        <h4 class="ter_display" > Total Enviromental Rating (TER): <var class="ter_display" id="ter_value">0</var> % </h4>
                     </div>
 
-                    <!-- MIDGES -->
+                    <!-- HBI INDEX -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> Midges: <var class="slider_value_display" id="midges_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges">
-                    </div>
-                    
-                    <!-- SOWBUGS -->
-                    <div class="slider_container">
-                        <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs">
-                    </div>
-                    
-                    <!-- SNAILS -->
-                    <div class="slider_container">
-                        <h4 class="slider_name"> Snails: <var class="slider_value_display" id="snails_value">0</var> % </h4>
-                        <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails">
-                    </div>
-
-                    <!-- SPECIES -->
-                    <div class="slider_container">
-                        <h4 class="slider_name"> Species: <var class="slider_value_display" id="species_value">0</var> % </h4>
-                        <input type="range" min="0" max="28" value="0" class="slider" id="slider_species">
-                    </div>
-                    
-                    <!-- DOMINANT SPECIES -->
-                    <div class="slider_container">
-                        <h4 class="slider_name"> Dominant Species: <var class="slider_value_display" id="d_species_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species">
-                    </div>
-                    
-                    <!-- EPT INDEX -->
-                    <div class="slider_container">
-                        <h4 class="slider_name"> EPT Index: <var class="slider_value_display" id="ept_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept">
-                    </div>
-
-                    <!-- FLIES -->
-                    <div class="slider_container">
-                        <h4 class="slider_name"> Flies: <var class="slider_value_display" id="flies_value">0</var> %  </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies">
+                        <h4 class="slider_name"> HBI Index: <var class="slider_value_display" id="hbi_value">0</var> </h4>
+                        <input type="range" min="1" max="8" value="0" class="slider" id="slider_hbi">
                     </div>
 
                     <!-- INSECTS -->
@@ -104,14 +102,58 @@
                         <input type="range" min="0" max="100" value="0" class="slider" id="slider_insects">
                     </div>
 
-                    <!-- HBI INDEX -->
+                    <!-- FLIES -->
                     <div class="slider_container">
-                        <h4 class="slider_name"> HBI Index: <var class="slider_value_display" id="hbi_value">0</var> %  </h4>
-                        <input type="range" min="1" max="8" value="0" class="slider" id="slider_hbi">
+                        <h4 class="slider_name"> Flies: <var class="slider_value_display" id="flies_value">0</var> %  </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies">
                     </div>
+
+                    <!-- EPT INDEX -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> EPT Index: <var class="slider_value_display" id="ept_value">0</var> % </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept">
+                    </div>
+
+                    <!-- DOMINANT SPECIES -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Dominant Species: <var class="slider_value_display" id="d_species_value">0</var> % </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species">
+                    </div>
+
+                    <!-- SPECIES -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Species: <var class="slider_value_display" id="species_value">0</var> </h4>
+                        <input type="range" min="0" max="28" value="0" class="slider" id="slider_species">
+                    </div>
+
+                    <!-- SNAILS -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Snails: <var class="slider_value_display" id="snails_value">0</var> % </h4>
+                        <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails">
+                    </div>
+
+                    <!-- SOWBUGS -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs">
+                    </div>
+
+                    <!-- MIDGES -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Midges: <var class="slider_value_display" id="midges_value">0</var> % </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges">
+                    </div>
+
+                    <!-- WORMS -->
+                    <div class="slider_container">
+                        <h4 class="slider_name"> Worms: <var class="slider_value_display" id="worms_value">0</var> % </h4>
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms">
+                    </div>
+
             </div>
 
         </div>
+    </div>
     </body>
 
 
@@ -162,7 +204,7 @@
     }
 
     /* Value display */
-    class ValueDisplay {
+    class ValueDisplayPercentage {
         constructor(sliderId, varId) {
             // Select the slider and <var> elements by their IDs
             this.slider = document.getElementById(sliderId);
@@ -180,6 +222,29 @@
                 const valPercentage = currentValue / maxValue * 100;
                 const valRound = Math.round(valPercentage);
                 this.varElement.textContent = valRound;
+
+            } else {
+                console.error('Var element not found');
+            }
+        }
+
+    }
+
+    class ValueDisplayNumbered {
+        constructor(sliderId, varId) {
+            // Select the slider and <var> elements by their IDs
+            this.slider = document.getElementById(sliderId);
+            this.varElement = document.querySelector(`#${varId}`);
+
+            this.slider.addEventListener('input', () => {
+                this.updateContent();
+            });
+        }
+
+        updateContent() {
+            if (this.varElement) {
+                //const currentValue = this.slider.value;
+                this.varElement.textContent = this.slider.value;
 
             } else {
                 console.error('Var element not found');
@@ -215,6 +280,65 @@
         }
         
     }
+
+    /* Get color for TER Rating */
+    class GetSliderRating {
+        constructor(sliderId, max_1, min_2, max_2, min_3) {
+            this.slider = document.getElementById(sliderId);
+            this.maxValue = this.slider.max || 100; // Fallback to 100 if max isn't set
+            
+            this.max_1 = max_1;
+            this.min_2 = min_2;
+            this.max_2 = max_2;
+            this.min_3 = min_3;
+            this.color = null;
+            this.rating = null;
+
+            // Call returnColor initially to set the color
+            this.returnColor();
+            this.returnValue();
+
+            // Add an event listener to update the color and rating when the slider changes
+            this.slider.addEventListener('input', () => {
+            this.returnColor();
+            this.returnValue();
+            });
+        }
+
+        returnColor() {
+            if (this.slider.value <= this.maxValue * this.max_1) {
+            this.color = 'green';
+            } else if (
+            this.slider.value >= this.maxValue * this.min_2 &&
+            this.slider.value <= this.maxValue * this.max_2
+            ) {
+            this.color = 'yellow';
+            } else if (this.slider.value >= this.maxValue * this.min_3) {
+            this.color = 'red';
+            } else {
+            this.color = null;
+            }
+
+            console.log(`Current color: ${this.color}`);
+        }
+
+        returnValue() {
+            if (this.color === 'green') {
+            this.rating = 0;
+            } else if (this.color === 'yellow') {
+            this.rating = 3;
+            } else if (this.color === 'red') {
+            this.rating = 5;
+            } else {
+            this.rating = null;
+            }
+
+            console.log(`Current rating: ${this.rating}`);
+            return this.rating;
+        }
+    }
+
+
 
  /*
     document.getElementById('slider_worms').addEventListener('input', function () {
@@ -263,18 +387,21 @@
 
         if (currentValue <= 10) {
             slider.classList.add('slider-red');
+            const species_rating = 5;
         } else {
             slider.classList.remove('slider-red');
         }
 
         if (currentValue == 11) {
             slider.classList.add('slider-yellow');
+            const species_rating = 3;
         } else {
             slider.classList.remove('slider-yellow');
         }
  
         if (currentValue >= 12) {
             slider.classList.add('slider-green');
+            const species_rating = 0;
         } else {
             slider.classList.remove('slider-green');
         }
@@ -437,34 +564,34 @@
 
     /* Value Display */
     // Worms
-    new ValueDisplay('slider_worms', 'worms_value');
+    new ValueDisplayPercentage('slider_worms', 'worms_value');
 
     // Midges
-    new ValueDisplay('slider_midges', 'midges_value');
+    new ValueDisplayPercentage('slider_midges', 'midges_value');
 
     // Sowbugs
-    new ValueDisplay('slider_sowbugs', 'sowbugs_value');
+    new ValueDisplayPercentage('slider_sowbugs', 'sowbugs_value');
 
     // Snails
-    new ValueDisplay('slider_snails', 'snails_value');
+    new ValueDisplayPercentage('slider_snails', 'snails_value');
 
     // Species
-    new ValueDisplay('slider_species', 'species_value');
+    new ValueDisplayNumbered('slider_species', 'species_value');
 
     // Dominant Species
-    new ValueDisplay('slider_d_species', 'd_species_value');
+    new ValueDisplayPercentage('slider_d_species', 'd_species_value');
 
     // EPT Index
-    new ValueDisplay('slider_ept', 'ept_value');
+    new ValueDisplayPercentage('slider_ept', 'ept_value');
 
     // Flies
-    new ValueDisplay('slider_flies', 'flies_value');
+    new ValueDisplayPercentage('slider_flies', 'flies_value');
 
     // Insects
-    new ValueDisplay('slider_insects', 'insects_value');
+    new ValueDisplayPercentage('slider_insects', 'insects_value');
 
     // HBI Index
-    new ValueDisplay('slider_hbi', 'hbi_value');
+    new ValueDisplayNumbered('slider_hbi', 'hbi_value');
 
 
 
@@ -501,9 +628,57 @@
 
 
     /* TER Rating */
+    const sliders = document.querySelectorAll('input[type="range"]');
+    const resultDisplay = document.getElementById('ter_value');
+    const overlayRiver = document.querySelector('.overlay_river');
 
+    function setBackgroundColor(totalRating) {
+        let hue;
 
+        // Set hue based on totalRating value
+        if (totalRating <= 19) {
+            hue = 120; // Green
 
+        } else if (totalRating >= 20 && totalRating <= 24) {
+            hue = 80; // Yellow-Green
+
+        } else if (totalRating >= 25 && totalRating <= 29){
+            hue = 60; // Yellow
+
+        } else if (totalRating >= 30 && totalRating <= 34) {
+            hue = 30; // Orange
+
+        } else if (totalRating >= 35 && totalRating <= 50) {
+            hue = 0; // Red
+        } else {
+            hue = 180;
+        }
+
+        overlayRiver.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+    }
+
+    function calculateTotalRating() {
+        let totalRating = 0;
+
+        const worms_rating = new GetSliderRating('slider_worms', 0.10, 0.11, 0.30, 0.31);
+        const midges_rating = new GetSliderRating('slider_midges', 0.10, 0.11, 0.40, 0.41);
+        const sowbugs_rating = new GetSliderRating('slider_sowbugs', 0.00, 0.01, 0.05, 0.06);
+        const d_species_rating = new GetSliderRating('slider_d_species', 0.40, 0.41, 0.45, 0.46);
+
+        totalRating = worms_rating.rating + midges_rating.rating + sowbugs_rating.rating + d_species_rating.rating + species_rating;
+        
+        resultDisplay.textContent = `${totalRating}`;
+
+        // Set background color based on totalRating
+        setBackgroundColor(totalRating);
+
+    }
+
+    sliders.forEach(slider => {
+        slider.addEventListener('input', calculateTotalRating);
+    });
+
+    calculateTotalRating();
 
 </script>
 </html>
