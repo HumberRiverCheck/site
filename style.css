@@ -33,20 +33,20 @@
     position: absolute;
     top: 30%; /* Adjust these values to position the overlay over the river */
     left: 20%; /* Adjust according to the image */
-    width: 60%; /* Adjust to cover the width of the river area */
-    height: 20%; /* Adjust to cover the height of the river area */
+    width: 80%; /* Adjust to cover the width of the river area */
+    height: 70%; /* Adjust to cover the height of the river area */
     background-color: hsl(0, 100%, 50%);
     opacity: 0.3; /* Adjust opacity as needed */
     z-index: 2; /* Keep overlay above the image */
     pointer-events: none; /* Allow clicks to pass through */
     border-radius: 20px; /* Optional: use to create a curved shape */
-  }
+}
 
 /* Column of sliders */
 .slider_column {
     display: flex;
     flex-direction: column-reverse;
-    width: 14%;
+    width: 16%;
     height: 100%;
     margin-right: 60px;
     z-index: 3;
@@ -66,7 +66,7 @@
 .slider_name {
     color: white;
     font-style: bold;
-    font-size: 25px;
+    font-size: 23px;
     font-family: "Kanit";
     margin: 0 auto;
 
@@ -79,6 +79,7 @@
     font-size: 25px;
     font-family: "Kanit";
     margin: 0 auto;
+    margin-bottom: 20px;
 
 }
 
@@ -89,6 +90,7 @@
     width: 12%;
     height: 100%;
     margin-right: 15px;
+    z-index: 3;
 }
 
 .worms_info {
@@ -206,7 +208,7 @@
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 16px; /* Specified height */
+    height: 12px; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
