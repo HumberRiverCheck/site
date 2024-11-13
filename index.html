@@ -139,19 +139,19 @@
                     <!-- SOWBUGS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs" oninput="adjustSliders()">
                     </div>
 
                     <!-- MIDGES -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Midges: <var class="slider_value_display" id="midges_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges" oninput="adjustSliders()">
                     </div>
 
                     <!-- WORMS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Worms: <var class="slider_value_display" id="worms_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms" oninput="adjustSliders()">
                     </div>
 
             </div>
@@ -1011,17 +1011,31 @@
 
 
    /* Adjust */
-   /*
    function adjustSliders() {
         const sliders = [
             document.getElementById('slider_worms'),
             document.getElementById('slider_midges'),
             document.getElementById('slider_sowbugs')
+            /*
+            document.getElementById('slider_snails'),
+            document.getElementById('slider_d_species'),
+            document.getElementById('slider_ept'),
+            document.getElementById('slider_flies'),
+            document.getElementById('slider_insects')
+            */
         ];
         const values = [
             document.getElementById('worms_value'),
             document.getElementById('midges_value'),
             document.getElementById('sowbugs_value')
+            /*
+            document.getElementById('snails_value'),
+            document.getElementById('species_value'),
+            document.getElementById('d_species_value'),
+            document.getElementById('ept_value'),
+            document.getElementById('flies_value'),
+            document.getElementById('insects_value'),
+            */
         ];
 
         // Get total of all slider values
@@ -1057,6 +1071,6 @@
 
         // Initialize the sliders on page load
         document.addEventListener("DOMContentLoaded", adjustSliders);
-        */
+        
 </script>
 </html>
