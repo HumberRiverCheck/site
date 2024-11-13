@@ -1,65 +1,79 @@
 <!DOCTYPE html>
+
 <style>
-.background-container {
-  position: relative;
+ div {
+  margin-bottom: 10px;
+}
+input[type="range"] {
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.background-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1; /* Keep image behind the overlay */
-}
-
-.overlay-river {
-  position: absolute;
-  top: 30%; /* Adjust these values to position the overlay over the river */
-  left: 20%; /* Adjust according to the image */
-  width: 60%; /* Adjust to cover the width of the river area */
-  height: 20%; /* Adjust to cover the height of the river area */
-  background-color: hsl(0, 100%, 50%);
-  opacity: 0.3; /* Adjust opacity as needed */
-  z-index: 2; /* Keep overlay above the image */
-  pointer-events: none; /* Allow clicks to pass through */
-  border-radius: 20px; /* Optional: use to create a curved shape */
-}
-
-.slider {
-  position: absolute;
-  bottom: 20px; /* Adjust this value to move the slider up or down */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3; /* Keeps slider above all other elements */
-  width: 80%; /* Adjust width as needed */
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better visibility */
-  pointer-events: auto; /* Ensures the slider is interactive */
 }
 </style>
 
-
 <html>
-    <div class="background-container">
-        <img src="IMG_5593.jpeg" alt="Background Image" class="background-image">
-        <div class="overlay-river"></div>
-        <div>
-            <input type="range" id="colorSlider" min="0" max="360" class="slider">
-        </div>
-      </div>
+  <div>
+    <label for="slider1">Slider 1</label>
+    <input type="range" id="slider1" min="0" max="100" value="33" oninput="adjustSliders()">
+    <span id="value1">33%</span>
+  </div>
+  <div>
+    <label for="slider2">Slider 2</label>
+    <input type="range" id="slider2" min="0" max="100" value="33" oninput="adjustSliders()">
+    <span id="value2">33%</span>
+  </div>
+  <div>
+    <label for="slider3">Slider 3</label>
+    <input type="range" id="slider3" min="0" max="100" value="34" oninput="adjustSliders()">
+    <span id="value3">34%</span>
+  </div>
+
 </html>
 
 <script>
-    const colorSlider = document.getElementById('colorSlider');
-    const overlayRiver = document.querySelector('.overlay-river');
 
-    colorSlider.addEventListener('input', (event) => {
-        const hue = event.target.value;
-        overlayRiver.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+function adjustSliders() {
+  const sliders = [
+    document.getElementById('slider1'),
+    document.getElementById('slider2'),
+    document.getElementById('slider3')
+  ];
+  const values = [
+    document.getElementById('value1'),
+    document.getElementById('value2'),
+    document.getElementById('value3')
+  ];
+
+  // Get total of all slider values
+  const total = sliders.reduce((sum, slider) => sum + parseInt(slider.value), 0);
+
+  // Calculate the overage (if total > 100) or shortage (if total < 100)
+  const excess = total - 100;
+
+  // Adjust the other sliders to make up the difference
+  if (excess !== 0) {
+    let remainingSliders = sliders.length - 1;
+    sliders.forEach((slider, index) => {
+      if (slider !== document.activeElement) {
+        // Adjust the other sliders proportionally
+        let adjustment = Math.round(excess / remainingSliders);
+        let newValue = parseInt(slider.value) - adjustment;
+
+        // Ensure the slider stays within 0-100 bounds
+        newValue = Math.max(0, Math.min(newValue, 100));
+
+        slider.value = newValue;
+        values[index].textContent = `${slider.value}%`;
+        remainingSliders--;
+      }
     });
+  }
+
+  // Update displayed values for all sliders
+  sliders.forEach((slider, index) => {
+    values[index].textContent = `${slider.value}%`;
+  });
+}
+
+// Initialize the sliders on page load
+document.addEventListener("DOMContentLoaded", adjustSliders);
 
 </script>

@@ -28,9 +28,11 @@
     <div class="background_container">
     <img src="IMG_5593.jpeg" alt="Background Image" class="background_image">
         <div class="outer">
-            <div class="overlay_river">
+            <div class="overlay_river1"> </div>
+            <div class="overlay_river2"> </div>
+            <div class="overlay_river3"> </div>
+            <div class="overlay_river4"> </div>
 
-            </div>
             <div class="slider_info_wrap">
                 <!-- Description for worms slider -->
                 <div class="worms_info">
@@ -931,7 +933,10 @@
     /* TER Rating */
     const sliders = document.querySelectorAll('input[type="range"]');
     const resultDisplay = document.getElementById('ter_value');
-    const overlayRiver = document.querySelector('.overlay_river');
+    const overlayRiver1 = document.querySelector('.overlay_river1');
+    const overlayRiver2 = document.querySelector('.overlay_river2');
+    const overlayRiver3 = document.querySelector('.overlay_river3');
+    const overlayRiver4 = document.querySelector('.overlay_river4');
 
     function setBackgroundColor(totalRating) {
         let hue;
@@ -955,7 +960,11 @@
             hue = 180;
         }
 
-        overlayRiver.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        overlayRiver1.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        overlayRiver2.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        overlayRiver3.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        overlayRiver4.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+
     }
 
     function calculateTotalRating() {
@@ -1000,5 +1009,54 @@
 
     calculateTotalRating();
 
+
+   /* Adjust */
+   /*
+   function adjustSliders() {
+        const sliders = [
+            document.getElementById('slider_worms'),
+            document.getElementById('slider_midges'),
+            document.getElementById('slider_sowbugs')
+        ];
+        const values = [
+            document.getElementById('worms_value'),
+            document.getElementById('midges_value'),
+            document.getElementById('sowbugs_value')
+        ];
+
+        // Get total of all slider values
+        const total = sliders.reduce((sum, slider) => sum + parseInt(slider.value), 0);
+
+        // Calculate the overage (if total > 100) or shortage (if total < 100)
+        const excess = total - 100;
+
+        // Adjust the other sliders to make up the difference
+        if (excess !== 0) {
+            let remainingSliders = sliders.length - 1;
+            sliders.forEach((slider, index) => {
+            if (slider !== document.activeElement) {
+                // Adjust the other sliders proportionally
+                let adjustment = Math.round(excess / remainingSliders);
+                let newValue = parseInt(slider.value) - adjustment;
+
+                // Ensure the slider stays within 0-100 bounds
+                newValue = Math.max(0, Math.min(newValue, 100));
+
+                slider.value = newValue;
+                values[index].textContent = `${slider.value}%`;
+                remainingSliders--;
+            }
+            });
+        }
+
+        // Update displayed values for all sliders
+        sliders.forEach((slider, index) => {
+            values[index].textContent = `${slider.value}%`;
+        });
+        }
+
+        // Initialize the sliders on page load
+        document.addEventListener("DOMContentLoaded", adjustSliders);
+        */
 </script>
 </html>
