@@ -27,11 +27,20 @@
     <body class="background_image">
     <div class="background_container">
     <img src="IMG_5593.jpeg" alt="Background Image" class="background_image">
-        <div class="outer">
-            <div class="overlay_river1"> </div>
-            <div class="overlay_river2"> </div>
-            <div class="overlay_river3"> </div>
-            <div class="overlay_river4"> </div>
+        <div class="outer"> <!-- Whole page -->
+            <div class="nav"> <!-- Navigation bar -->
+                <div class="logo"> <!-- Humber logo, includes icon and name -->
+                    <img src="logo_icon.png" style="width: 60px; height: 60px;"></img>
+                    <img src="logo_name.png" style="width: 270px; height: 60px;"></img>
+                </div>
+
+                <div class="description"> <!-- Site description -->
+                    <h1> The Life in the Humber River/ Gabekanaang-ziibi/ Niwa’ah Onega’gaih’ih </h1>
+                </div>
+            </div>
+
+
+            <div class="overlay_river"> </div>
 
             <div class="slider_info_wrap">
                 <!-- Description for worms slider -->
@@ -139,19 +148,19 @@
                     <!-- SOWBUGS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs" oninput="adjustSliders()">
                     </div>
 
                     <!-- MIDGES -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Midges: <var class="slider_value_display" id="midges_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges" oninput="adjustSliders()">
                     </div>
 
                     <!-- WORMS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Worms: <var class="slider_value_display" id="worms_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms" oninput="adjustSliders()">
                     </div>
 
             </div>
@@ -933,37 +942,37 @@
     /* TER Rating */
     const sliders = document.querySelectorAll('input[type="range"]');
     const resultDisplay = document.getElementById('ter_value');
-    const overlayRiver1 = document.querySelector('.overlay_river1');
-    const overlayRiver2 = document.querySelector('.overlay_river2');
-    const overlayRiver3 = document.querySelector('.overlay_river3');
-    const overlayRiver4 = document.querySelector('.overlay_river4');
+    const overlayRiver = document.querySelector('.overlay_river');
 
     function setBackgroundColor(totalRating) {
-        let hue;
-
-        // Set hue based on totalRating value
         if (totalRating <= 19) {
-            hue = 120; // Green
+            overlayRiver.style.display = 'none'; // None
 
-        } else if (totalRating >= 20 && totalRating <= 24) {
-            hue = 80; // Yellow-Green
-
-        } else if (totalRating >= 25 && totalRating <= 29){
-            hue = 60; // Yellow
-
-        } else if (totalRating >= 30 && totalRating <= 34) {
-            hue = 30; // Orange
-
-        } else if (totalRating >= 35 && totalRating <= 50) {
-            hue = 0; // Red
         } else {
-            hue = 180;
-        }
+            let hue;
 
-        overlayRiver1.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-        overlayRiver2.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-        overlayRiver3.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-        overlayRiver4.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+            // Set hue based on totalRating value
+            if (totalRating >= 20 && totalRating <= 24) {
+                hue = 80; // Yellow-Green
+
+            } else if (totalRating >= 25 && totalRating <= 29){
+                hue = 60; // Yellow
+
+            } else if (totalRating >= 30 && totalRating <= 34) {
+                hue = 30; // Orange
+
+            } else if (totalRating >= 35 && totalRating <= 50) {
+                hue = 0; // Red
+            } else {
+                hue = 180;
+            }
+
+            overlayRiver.style.display = 'flex';
+            overlayRiver.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        }
+        
+
+        
 
     }
 
@@ -1011,8 +1020,8 @@
 
 
    /* Adjust */
-   /*
-   oninput="adjustSliders()"
+   
+   /*oninput="adjustSliders()" 
    function adjustSliders() {
         const sliders = [
             document.getElementById('slider_worms'),
@@ -1025,11 +1034,13 @@
             document.getElementById('slider_flies'),
             document.getElementById('slider_insects')
             
+            
         ];
         const values = [
             document.getElementById('worms_value'),
             document.getElementById('midges_value'),
             document.getElementById('sowbugs_value')
+
             
             document.getElementById('snails_value'),
             document.getElementById('species_value'),
@@ -1038,7 +1049,8 @@
             document.getElementById('flies_value'),
             document.getElementById('insects_value'),
             
-        ];
+            
+        ]; 
 
         // Get total of all slider values
         const total = sliders.reduce((sum, slider) => sum + parseInt(slider.value), 0);
@@ -1074,6 +1086,7 @@
         // Initialize the sliders on page load
         document.addEventListener("DOMContentLoaded", adjustSliders);
         */
+        
         
 </script>
 </html>
