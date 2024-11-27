@@ -25,7 +25,7 @@
     justify-content: right;
     align-items: right;
     width: 100%;
-    height: 850px;
+    height: 825px;
     
 
 }
@@ -65,13 +65,62 @@
     color: whitesmoke;
 }
 
+.info_foot {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+    width: 100%;
+    height: 10%;
+    margin-left: 15px;
+    z-index: 3;
+}
+
+.info_foot a img {
+    width: 40px;
+    height: 40px;
+
+}
+
+.user_description {
+    display: none;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    z-index: 3;
+
+}
+
+.info_box {
+    background: rgba(97, 91, 91, 0.473);
+    margin: 10px;
+
+}
+
+.info_box p {
+    font-family: 'Kanit';
+    font-size: 16px;
+    color: white;
+
+
+
+}
+
+.user_description button {
+    border-radius: 10px;
+    background-color: lightgrey;
+}
+
+
 .overlay_river {
     display: flex;
     position: absolute;
-    /* Position
-    top: 30%;
-    left: 25%;
-    */
     width: 100%; /* Adjust to cover the width of the river area */
     height: 100%; /* Adjust to cover the height of the river area */
     background-color: hsl(0, 100%, 50%);
@@ -88,10 +137,25 @@
     flex-direction: column-reverse;
     width: 20%;
     height: 100%;
-    margin-right: 60px;
-    margin-top: -20px;
+    margin-right: 35px;
     z-index: 3;
 
+}
+
+@media (max-width: 768px) {
+    .slider_column {
+        width: 50%; /* Adjust to 50% for medium screens (like tablets) */
+        margin-right: 0; /* Remove margin-right for smaller screens */
+        margin-top: 10px; /* Adjust top margin for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .slider_column {
+        width: 100%; /* Make it full-width for smaller screens (like mobile) */
+        margin-right: 0; /* Remove margin-right */
+        margin-top: 10px; /* Adjust top margin */
+    }
 }
 
 .slider_container {
