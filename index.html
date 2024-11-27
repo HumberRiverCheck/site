@@ -26,19 +26,23 @@
 
     <body class="background_image">
     <div class="background_container">
-    <img src="IMG_5593.jpeg" alt="Background Image" class="background_image">
-        <div class="outer"> <!-- Whole page -->
-            <div class="nav"> <!-- Navigation bar -->
-                <div class="logo"> <!-- Humber logo, includes icon and name -->
-                    <img src="logo_icon.png" style="width: 60px; height: 60px;"></img>
-                    <img src="logo_name.png" style="width: 270px; height: 60px;"></img>
-                </div>
+        <img src="IMG_5593.jpeg" alt="Background Image" class="background_image"> </img>
 
-                <div class="description"> <!-- Site description -->
-                    <h1> The Life in the Humber River/ Gabekanaang-ziibi/ Niwa’ah Onega’gaih’ih </h1>
-                </div>
+        <!-- Navigation bar -->
+        <div class="nav"> 
+            <div class="logo"> <!-- Humber logo, includes icon and name -->
+                <img src="logo_icon.png" style="width: 60px; height: 60px;"></img>
+                <img src="logo_name.png" style="width: 260px; height: 60px;"></img>
             </div>
 
+            <div class="description"> <!-- Site description -->
+                <h1> The Life in the Humber River / Gabekanaang-ziibi / Niwa’ah Onega’gaih’ih </h1>
+            </div>
+        </div>
+
+
+        <!-- Whole page -->
+        <div class="outer"> 
 
             <div class="overlay_river"> </div>
 
@@ -99,68 +103,69 @@
                 <!-- Sliders (Inverted container, so top slider starts at the bottom.) -->
 
                     <!-- TER Rating -->
-                    <div>
-                        <h4 class="ter_display" > Total Enviromental Rating (TER): <var class="ter_display" id="ter_value">0</var> % </h4>
+                    <div class="slider_container">
+                        <h4 class="ter_display"> Total Enviromental Rating (TER): <var class="ter_display" id="ter_value">0</var> % </h4>
+                        <input type="range" min="1" max="50" value="0" class="slider" id="slider_ter" disabled >
                     </div>
 
                     <!-- HBI INDEX -->
                     <div class="slider_container">
                         <h4 class="slider_name"> HBI Index: <var class="slider_value_display" id="hbi_value">0</var> </h4>
-                        <input type="range" min="1" max="8" value="0" class="slider" id="slider_hbi">
+                        <input type="range" min="1" max="8" value="0" class="slider" id="slider_hbi" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- INSECTS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Insects: <var class="slider_value_display" id="insects_value">0</var> %  </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_insects">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_insects" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- FLIES -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Flies: <var class="slider_value_display" id="flies_value">0</var> %  </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- EPT INDEX -->
                     <div class="slider_container">
                         <h4 class="slider_name"> EPT Index: <var class="slider_value_display" id="ept_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- DOMINANT SPECIES -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Dominant Species: <var class="slider_value_display" id="d_species_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- SPECIES -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Species: <var class="slider_value_display" id="species_value">0</var> </h4>
-                        <input type="range" min="0" max="28" value="0" class="slider" id="slider_species">
+                        <input type="range" min="0" max="28" value="0" class="slider" id="slider_species" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- SNAILS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Snails: <var class="slider_value_display" id="snails_value">0</var> % </h4>
-                        <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails">
+                        <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- SOWBUGS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs" oninput="adjustSliders()">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- MIDGES -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Midges: <var class="slider_value_display" id="midges_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges" oninput="adjustSliders()">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges" oninput="updateTSlider(); ">
                     </div>
 
                     <!-- WORMS -->
                     <div class="slider_container">
                         <h4 class="slider_name"> Worms: <var class="slider_value_display" id="worms_value">0</var> % </h4>
-                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms" oninput="adjustSliders()">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms" oninput="updateTSlider(); ">
                     </div>
 
             </div>
@@ -874,6 +879,7 @@
         
     });
 
+
     /* Value Display */
     // Worms
     new ValueDisplayPercentage('slider_worms', 'worms_value');
@@ -976,9 +982,11 @@
 
     }
 
-    function calculateTotalRating() {
-        let totalRating = 0;
+    /*                  Calculate and show TER rating                   */
+    let totalRating = 0;
 
+    function calculateTotalRating() {
+        
         /* Get rating for linear sliders */
         const worms_rating = new GetSliderRating('slider_worms', 0.10, 0.11, 0.30, 0.31);
         const midges_rating = new GetSliderRating('slider_midges', 0.10, 0.11, 0.40, 0.41);
@@ -991,7 +999,7 @@
 
         /* Get ratings for ept index */
         const ept_rating = new GetEPTRating('slider_ept', 0.05, 0.10);
-        
+
         /* Get ratings for flies slider */
         const flies_rating = new GetFliesRating('slider_flies', 0.15, 0.20, 0.45, 0.50);
 
@@ -1019,7 +1027,50 @@
     calculateTotalRating();
 
 
-   /* Adjust */
+    /*                  Adjusts TER slider based off TER value                  */
+    function updateTSlider() {
+        // Declare
+        const slider = document.getElementById('slider_ter');
+        const sliderMax = parseInt(slider.max); // Maximum value of the slider
+        const currentValue = slider.value;
+
+        // Update the slider value
+        slider.value = totalRating;
+        
+        // Change color
+        if (currentValue <= 19) {
+            slider.classList.add('slider-green');
+        } else {
+            slider.classList.remove('slider-green');
+        }
+
+        if (currentValue >= 20 && currentValue <= 24) {
+            slider.classList.add('slider-yellow-green');
+        } else {
+            slider.classList.remove('slider-yellow-green');
+        }
+
+        if (currentValue >= 25 && currentValue <= 29) {
+            slider.classList.add('slider-yellow');
+        } else {
+            slider.classList.remove('slider-yellow');
+        }
+
+        if (currentValue >= 30 && currentValue <= 34) {
+            slider.classList.add('slider-orange');
+        } else {
+            slider.classList.remove('slider-orange');
+        }
+
+        if (currentValue >= 35 && currentValue <= 50) {
+            slider.classList.add('slider-red');
+        } else {
+            slider.classList.remove('slider-red');
+        }
+    }
+
+
+   /*                       Adjusts all other sliders to never exceed 100%                  */
    
    /*oninput="adjustSliders()" 
    function adjustSliders() {

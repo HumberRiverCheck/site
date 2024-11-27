@@ -25,44 +25,44 @@
     justify-content: right;
     align-items: right;
     width: 100%;
-    height: 950px;
+    height: 850px;
+    
 
 }
 
 .nav {
     display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
+    position: relative;
+    flex-direction: row;
+    text-align: right;
     width: 100%;
     height: 80px;
     padding-left: 25px;
     padding-right: 25px;
-    z-index: 3;
-
+    visibility: visible;
+    background: rgba(97, 91, 91, 0.473);
+    z-index: 5;
 
 }
 
 .logo {
     display: flex;
     padding: 10px;
-    margin: 0px;
-    /* background-color: white; */
+    margin-right: 0px;
+    /* background: rgba(97, 91, 91, 0.473); */
 
 }
 
 .description {
     display: flex;
-    justify-content: left;
-    align-items: left;
-    padding-left: 10px;
-    margin: 0px;
+    align-items: center;
+    margin-left: 37%;
 }
 
 .description h1 {
     font-family: 'Kanit';
-    font-size: 20px;
-    color: #ADD8E6;
+    font-size: 24px;
+    color: whitesmoke;
 }
 
 .overlay_river {
@@ -86,9 +86,10 @@
 .slider_column {
     display: flex;
     flex-direction: column-reverse;
-    width: 16%;
+    width: 20%;
     height: 100%;
     margin-right: 60px;
+    margin-top: -20px;
     z-index: 3;
 
 }
@@ -96,7 +97,7 @@
 .slider_container {
     text-align: left;
     padding: 2px;
-    margin: 1px;
+    margin: 0px;
     background: rgba(97, 91, 91, 0.473);
     z-index: 3;
     
@@ -106,7 +107,7 @@
 .slider_name {
     color: white;
     font-style: bold;
-    font-size: 23px;
+    font-size: 20px;
     font-family: "Kanit";
     margin: 0 auto;
 
@@ -116,10 +117,10 @@
 .ter_display {
     color: white;
     font-style: normal;
-    font-size: 25px;
+    font-size: 20px;
     font-family: "Kanit";
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 
 }
 
@@ -248,7 +249,7 @@
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     width: 100%; /* Full-width */
-    height: 12px; /* Specified height */
+    height: 10px; /* Specified height */
     background: #d3d3d3; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -276,20 +277,22 @@
 */
 
 .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: blue; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px; /* Thumb width */
+    height: 18px; /* Thumb height */
     border-radius: 50%;
-    transition: background-color 0.5s ease;
+    background-color: rgb(0, 102, 128); /* Initial color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.5s; /* Smooth transition for background color */
     z-index: 3;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px; /* Thumb width */
-    height: 20px; /* Thumb height */
+    width: 18px; /* Thumb width */
+    height: 18px; /* Thumb height */
     border-radius: 50%;
     background-color: rgb(0, 102, 128); /* Initial color */
     cursor: pointer; /* Pointer cursor on hover */
@@ -303,8 +306,16 @@ input[type=range].slider-green::-webkit-slider-thumb {
     background: green;
 }
 
+input[type=range].slider-yellow-green::-webkit-slider-thumb {
+    background: yellowgreen;
+}
+
 input[type=range].slider-yellow::-webkit-slider-thumb {
     background: yellow;
+}
+
+input[type=range].slider-orange::-webkit-slider-thumb {
+    background: orange;
 }
 
 input[type=range].slider-red::-webkit-slider-thumb {
