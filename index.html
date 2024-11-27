@@ -35,11 +35,48 @@
                     <img src="logo_name.png" style="width: 260px; height: 60px;"></img>
                 </div>
 
-                <div class="description"> <!-- Site description -->
-                    <h1> The Life in the Humber River / Gabekanaang-ziibi / Niwa’ah Onega’gaih’ih </h1>
+                <!-- Site description -->
+                <div class="page_description">
+                    
+                    <!-- Non-hoverable element in the description -->
+                    <div>
+                        <h1 class="description_font"> The Life in the Humber River </h1>
+                    </div>
+
+                    <!-- Divider 1 -->
+                    <div>
+                        <h1 class="description_font"> / </h1>
+                    </div>
+
+                    <!-- First hoverable element in the description -->
+                    <div class="desc_sec_1">
+                        <h1 class="description_font"> Gabekanaang-ziibi </h1>
+                    </div>
+
+                    <!-- Second divider -->
+                     <div> 
+                        <h1 class="description_font"> / </h1>
+                     </div>
+
+                    <!-- Second hoverable element -->
+                    <div class="desc_sec_2">
+                        <h1 class="description_font"> Niwa’ah Onega’gaih’ih </h1>
+                    </div>
+                
                 </div>
+
             </div>
 
+            <!-- Details are shown when user hovers over title elements -->
+            <!-- Explaination of Gabekanaang-ziibi -->
+            <div class="title_details_1"> 
+                <h2 class="title_details_font"> Gabekanaang-ziibi means “Leave the canoes and walk” in Anishinaabemowin  </h2>
+            </div>
+
+            <!-- Explaination of Niwa’ah Onega’gaih’ih -->
+            <div class="title_details_2"> 
+                <h2 class="title_details_font"> Niwa’ah Onega’gaih’ih means “The Little Thundering Waters” in Haudenosaunee  </h2>
+            </div>
 
             <!-- Whole page -->
             <div class="outer"> 
@@ -118,7 +155,7 @@
 
                         <!-- TER Rating -->
                         <div class="slider_container">
-                            <h4 class="ter_display"> Total Enviromental Rating (TER): <var class="ter_display" id="ter_value">0</var> % </h4>
+                            <h4 class="ter_display"> Total Enviromental Rating (TER): <var class="ter_display" id="ter_value">0</var>  </h4>
                             <input type="range" min="1" max="50" value="0" class="slider" id="slider_ter" disabled >
                         </div>
 
@@ -137,49 +174,49 @@
                         <!-- DOMINANT SPECIES -->
                         <div class="slider_container">
                             <h4 class="slider_name"> Dominant Species: <var class="slider_value_display" id="d_species_value">0</var> % </h4>
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_d_species" oninput="updateTSlider(); adjustSliders();">
                         </div>
 
                         <!-- INSECTS -->
                         <div class="slider_container">
                             <h4 class="slider_name"> Insects: <var class="slider_value_display" id="insects_value">0</var> %  </h4>
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_insects" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_insects" oninput="updateTSlider(); adjustSliders();">
                         </div>
 
                         <!-- EPT INDEX -->
                         <div class="slider_container">
                             <h4 class="slider_name"> EPT Index: <var class="slider_value_display" id="ept_value">0</var> % </h4>
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_ept" oninput="updateTSlider(); adjustSliders();">
                         </div>
 
                         <!-- FLIES -->
                         <div class="slider_container">
                             <h4 class="slider_name"> Flies: <var class="slider_value_display" id="flies_value">0</var> %  </h4>
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_flies" oninput="updateTSlider(); adjustSliders();">
                         </div>
 
                         <!-- MIDGES -->
                         <div class="slider_container">
                             <h4 class="slider_name"> Midges: <var class="slider_value_display" id="midges_value">0</var> % </h4>
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_midges" oninput="updateTSlider(); adjustSliders();">
                         </div>
 
                         <!-- SOWBUGS -->
                         <div class="slider_container">
                             <h4 class="slider_name"> Sowbugs: <var class="slider_value_display" id="sowbugs_value">0</var> % </h4>
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_sowbugs" oninput="updateTSlider(); adjustSliders();">
                         </div>
 
                         <!-- SNAILS -->
                         <div class="slider_container">
                             <h4 class="slider_name"> Snails: <var class="slider_value_display" id="snails_value">0</var> % </h4>
-                            <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="500" value="0" class="slider" id="slider_snails" oninput="updateTSlider(); adjustSliders();">
                         </div>
 
                         <!-- WORMS -->
                         <div class="slider_container">
                             <h4 class="slider_name"> Worms: <var class="slider_value_display" id="worms_value">0</var> % </h4>
-                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms" oninput="updateTSlider(); ">
+                            <input type="range" min="0" max="100" value="0" class="slider" id="slider_worms" oninput="updateTSlider(); adjustSliders();">
                         </div>
                         
                 </div>
@@ -1098,97 +1135,126 @@
 
    /*                       Adjusts all other sliders to never exceed 100%                  */
    
-   /*oninput="adjustSliders()" 
+   /* oninput="adjustSliders()" */
    function adjustSliders() {
-        const sliders = [
-            document.getElementById('slider_worms'),
-            document.getElementById('slider_midges'),
-            document.getElementById('slider_sowbugs')
-            
-            document.getElementById('slider_snails'),
-            document.getElementById('slider_d_species'),
-            document.getElementById('slider_ept'),
-            document.getElementById('slider_flies'),
-            document.getElementById('slider_insects')
-            
-            
-        ];
-        const values = [
-            document.getElementById('worms_value'),
-            document.getElementById('midges_value'),
-            document.getElementById('sowbugs_value')
+    const sliders = [
+        document.getElementById('slider_worms'),
+        document.getElementById('slider_midges'),
+        document.getElementById('slider_sowbugs'),
+        document.getElementById('slider_snails'),
+        document.getElementById('slider_d_species'),
+        document.getElementById('slider_ept'),
+        document.getElementById('slider_flies'),
+        document.getElementById('slider_insects')
+    ];
+    
+    const values = [
+        document.getElementById('worms_value'),
+        document.getElementById('midges_value'),
+        document.getElementById('sowbugs_value'),
+        document.getElementById('snails_value'),
+        document.getElementById('d_species_value'),
+        document.getElementById('ept_value'),
+        document.getElementById('flies_value'),
+        document.getElementById('insects_value')
+    ];
 
-            
-            document.getElementById('snails_value'),
-            document.getElementById('species_value'),
-            document.getElementById('d_species_value'),
-            document.getElementById('ept_value'),
-            document.getElementById('flies_value'),
-            document.getElementById('insects_value'),
-            
-            
-        ]; 
+    // Get total of all slider values
+    const total = sliders.reduce((sum, slider) => sum + parseInt(slider.value), 0);
 
-        // Get total of all slider values
-        const total = sliders.reduce((sum, slider) => sum + parseInt(slider.value), 0);
+    // Check if the total exceeds 100
+    const excess = total - 99;
 
-        // Calculate the overage (if total > 100) or shortage (if total < 100)
-        const excess = total - 100;
+    if (excess > 0) {
+        // If total > 100, distribute the excess proportionally
+        let remainingSliders = sliders.length;
 
-        // Adjust the other sliders to make up the difference
-        if (excess !== 0) {
-            let remainingSliders = sliders.length - 1;
-            sliders.forEach((slider, index) => {
+        sliders.forEach((slider, index) => {
             if (slider !== document.activeElement) {
-                // Adjust the other sliders proportionally
+                // Calculate how much to adjust the slider
                 let adjustment = Math.round(excess / remainingSliders);
                 let newValue = parseInt(slider.value) - adjustment;
 
-                // Ensure the slider stays within 0-100 bounds
+                // Ensure the new value stays within bounds (0-100)
                 newValue = Math.max(0, Math.min(newValue, 100));
 
                 slider.value = newValue;
-                values[index].textContent = `${slider.value}%`;
+                values[index].textContent = `${newValue}%`;
                 remainingSliders--;
             }
-            });
-        }
-
-        // Update displayed values for all sliders
-        sliders.forEach((slider, index) => {
-            values[index].textContent = `${slider.value}%`;
         });
-        }
+    }
 
-        // Initialize the sliders on page load
-        document.addEventListener("DOMContentLoaded", adjustSliders);
-        */
+    // Update displayed values for all sliders
+    sliders.forEach((slider, index) => {
+        values[index].textContent = `${slider.value}`;
+    });
+    }
+
+    // Initialize the sliders on page load
+    //document.addEventListener("DOMContentLoaded", adjustSliders);
+            
         
         
 
-        /*                  Instructions for the user                   */
-        function showGuide() {
-            const element = document.getElementById('user_desc'); 
+    /*                  Instructions for the user                   */
+    function showGuide() {
+        const element = document.getElementById('user_desc'); 
 
-            if (element) {
-                element.style.display = 'flex'; // Make info visible
-            } else {
-                console.error('Element not found!');
-            }
-
+        if (element) {
+            element.style.display = 'flex'; // Make info visible
+        } else {
+            console.error('Element not found!');
         }
 
-        function hideGuide() {
-            const element = document.getElementById('user_desc'); 
+    }
 
-            if (element) {
-                element.style.display = 'none'; // Make info hidden
-            } else {
-                console.error('Element not found!');
-            }
+    function hideGuide() {
+        const element = document.getElementById('user_desc'); 
 
-
+        if (element) {
+            element.style.display = 'none'; // Make info hidden
+        } else {
+            console.error('Element not found!');
         }
+
+
+    }
+
+    /*                  Show additional details for page title                  */
+    /* For Gabekanaang-ziibi */
+    const descSec1 = document.querySelector('.desc_sec_1');
+    const titleDetails1 = document.querySelector('.title_details_1');
+
+    // Add event listeners to handle hover
+    descSec1.addEventListener('mouseenter', () => {
+        titleDetails1.style.display = 'flex'; // Show the element
+    });
+
+    descSec1.addEventListener('mouseleave', () => {
+        titleDetails1.style.display = 'none'; // Hide the element
+    });
+
+    /* For Niwa’ah Onega’gaih’ih */
+    const descSec2 = document.querySelector('.desc_sec_2');
+    const titleDetails2 = document.querySelector('.title_details_2');
+
+    // Add event listeners to handle hover
+    descSec2.addEventListener('mouseenter', () => {
+        titleDetails2.style.display = 'flex'; // Show the element
+    });
+
+    descSec2.addEventListener('mouseleave', () => {
+        titleDetails2.style.display = 'none'; // Hide the element
+    });
+
+
+
+
+    /*                  Alternating Data                    */
+
+
+
 
 </script>
 </html>
