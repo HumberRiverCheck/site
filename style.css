@@ -246,7 +246,10 @@
 
 }
 
-/* Description for sliders */
+
+
+
+/*                  Description for sliders                 */
 .slider_info_wrap {
     display: flex;
     flex-direction: column-reverse;
@@ -365,6 +368,67 @@
     background: rgba(97, 91, 91, 0.473);
     margin-bottom: 10px;
 }
+
+
+/*                  Alternating Data pull out Box                   */
+.alt-data {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#pull-out {
+    position: absolute;
+    top: 26%;
+    right: -21.5%; /* Hidden off-screen initially */
+    width: 400px;
+    height: 100px;
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    transform: translateY(-50%);
+    transition: right 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#alt-pull-out {
+    position: absolute;
+    top: 50%;
+    left: -30px; /* Positioned just outside the div on the left */
+    transform: translateY(-50%);
+    background: rgba(97, 91, 91, 0.473);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#pull-out.show {
+    right: 0; /* Slide into view */
+}
+
+.pullout-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+
+}
+
+
+/*                  Slider Stuff                    */
 
 /* The slider itself */
 .slider {

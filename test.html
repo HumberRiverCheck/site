@@ -1,79 +1,76 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pull-Out Div with Moving Button</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="pull-out">
+        <button id="toggle-button">➔</button>
+        <p>This is a small pull-out div!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
 <style>
- div {
-  margin-bottom: 10px;
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
 }
-input[type="range"] {
-  width: 100%;
+
+#pull-out {
+    position: fixed;
+    top: 50%;
+    left: -200px; /* Hidden off-screen initially */
+    width: 200px;
+    height: 100px;
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#toggle-button {
+    position: absolute;
+    top: 50%;
+    right: -30px; /* Positioned just outside the div */
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#pull-out.show {
+    left: 0; /* Slide into view */
 }
 </style>
 
-<html>
-  <div>
-    <label for="slider1">Slider 1</label>
-    <input type="range" id="slider1" min="0" max="100" value="33" oninput="adjustSliders()">
-    <span id="value1">33%</span>
-  </div>
-  <div>
-    <label for="slider2">Slider 2</label>
-    <input type="range" id="slider2" min="0" max="100" value="33" oninput="adjustSliders()">
-    <span id="value2">33%</span>
-  </div>
-  <div>
-    <label for="slider3">Slider 3</label>
-    <input type="range" id="slider3" min="0" max="100" value="34" oninput="adjustSliders()">
-    <span id="value3">34%</span>
-  </div>
-
-</html>
-
 <script>
+  const toggleButton = document.getElementById('toggle-button');
+  const pullOutDiv = document.getElementById('pull-out');
 
-function adjustSliders() {
-  const sliders = [
-    document.getElementById('slider1'),
-    document.getElementById('slider2'),
-    document.getElementById('slider3')
-  ];
-  const values = [
-    document.getElementById('value1'),
-    document.getElementById('value2'),
-    document.getElementById('value3')
-  ];
-
-  // Get total of all slider values
-  const total = sliders.reduce((sum, slider) => sum + parseInt(slider.value), 0);
-
-  // Calculate the overage (if total > 100) or shortage (if total < 100)
-  const excess = total - 100;
-
-  // Adjust the other sliders to make up the difference
-  if (excess !== 0) {
-    let remainingSliders = sliders.length - 1;
-    sliders.forEach((slider, index) => {
-      if (slider !== document.activeElement) {
-        // Adjust the other sliders proportionally
-        let adjustment = Math.round(excess / remainingSliders);
-        let newValue = parseInt(slider.value) - adjustment;
-
-        // Ensure the slider stays within 0-100 bounds
-        newValue = Math.max(0, Math.min(newValue, 100));
-
-        slider.value = newValue;
-        values[index].textContent = `${slider.value}%`;
-        remainingSliders--;
-      }
-    });
-  }
-
-  // Update displayed values for all sliders
-  sliders.forEach((slider, index) => {
-    values[index].textContent = `${slider.value}%`;
+  // Toggle the visibility of the pull-out div
+  toggleButton.addEventListener('click', () => {
+      pullOutDiv.classList.toggle('show');
+      
+      // Change the toggle button arrow direction
+      toggleButton.textContent = pullOutDiv.classList.contains('show') ? '⟵' : '➔';
   });
-}
-
-// Initialize the sliders on page load
-document.addEventListener("DOMContentLoaded", adjustSliders);
-
+  
 </script>
